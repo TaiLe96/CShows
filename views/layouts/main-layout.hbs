@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ pageTitle }}</title>
+    <link rel="stylesheet" href="/css/main.css">
+    {{#if userCSS}}
+    <link rel="stylesheet" href="/css/user.css">
+    {{/if}}
+    {{#if ticketCSS}}
+    <link rel="stylesheet" href="/css/ticket.css">
+    {{/if}}
+</head>
+
+<body>
+    <header class="main-header">
+        <nav class="main-header__nav">
+            <ul class="main-header__item-list">
+                <li class="main-header__item"><a class="{{#if activeUserDashboard }}active{{/if}}" href="/">User
+                        Dashborad</a>
+                </li>
+                <li class="main-header__item"><a class="{{#if activePurchaseTicket }}active{{/if}}"
+                        href="/user/purchaseTicket">Purchase Ticket</a></li>
+                <li class="main-header__item"><a class="{{#if activeLogin }}active{{/if}}" href="/user/login">Login</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    {{{ body }}}
+</body>
+
+</html>

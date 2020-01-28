@@ -13,7 +13,7 @@ var db        = {};
 // } else {
 //   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 // }
-
+//testing
 fs
   .readdirSync(__dirname)
   .filter(function(file) {

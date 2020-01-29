@@ -33,7 +33,7 @@ passport.use(new LocalStrategy(
 
 //sequalize serialize and deserialize the user to keep auth state across HTTP requests
 passport.serializeUser(function(user, cb){
-    createImageBitmap(null, user);
+   cb(null, user);
 });
 
 passport.deserializeUser(function(obj, cb){

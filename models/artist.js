@@ -3,7 +3,6 @@ const bcrypt = require("bycrptjs")
 
 module.exports = function(sequelize, DataTypes) {
   var Artist = sequelize.define("artist", {
-    // The email cannot be null, and must be a proper email before creation
     email: {
       type: DataTypes.STRING,
       allowNull: false,

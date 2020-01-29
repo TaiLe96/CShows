@@ -39,14 +39,14 @@ app.engine(
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 // add purchase ticket
-const adminData = require('./routes/ticket');
+//const ticket = require('./routes/ticket');
 // import shop routes
-const userRoutes = require('./routes/user');
+//const userRoutes = require('./routes/user');
 
 
 
-app.use('/user', adminData.routes);
-app.use(userRoutes);
+
+require("./app/routes/html-routes.js")(app);
 
 app.use((req, res, next) => {
   res.status(404).render('404', { pageTitle: 'Page Not Found' });

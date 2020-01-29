@@ -4,9 +4,8 @@ const db = require("../models");
 module.exports = function(app) {
 
 // ARTIST ROUTES
-// =========================================================
 
-    // Get all users
+    // Get all artists
     app.get("/api/artists", function(req, res) {
         console.log(req.body);
         db.Artist.findAll({
@@ -17,7 +16,6 @@ module.exports = function(app) {
         });
     }); 
 
-    // Get one user by id and their playlists+subscriptions and return JSON
     app.get("/api/artists/:id", function(req, res) {
         console.log(req.body);
         db.Artist.findOne({
@@ -28,7 +26,7 @@ module.exports = function(app) {
         });
     }); 
 
-    // Add a user
+    // Add an artist
     app.post("/api/artists", function(req, res) {
         db.Artist.create({ 
             username: req.body.username,
@@ -40,10 +38,9 @@ module.exports = function(app) {
         });
     });
 
-    // Get user data
     app.get('/api/artists_data', function(req, res) {
         if (req.artists) {
-            // The user is not logged in
+        
             res.json(req.artists);
         } else {
             res.json({});

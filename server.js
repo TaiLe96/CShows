@@ -6,14 +6,16 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const ehbs = require('express-handlebars');
-
-var passport = './config/passport';
+var passport = require('./config/passport');
 var session = require('express-session');
-require('./config/passport');
+
+
+
+
+const PORT = process.env.PORT || 3000;
 // setup middleware
 const app = express();
-const PORT = process.env.PORT || 3000;
-var db = require('./models');
+
 
 // setup body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,8 +25,12 @@ app.use(express.json());
 
 //passport
 app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
+
+//routes
+require("./routes/passport-routes")(app);
+require("./routes/html-routes")(app)
 
 
 // Register Handlebars Engine
@@ -39,14 +45,14 @@ app.engine(
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 // add purchase ticket
-const adminData = require('./routes/ticket');
+//const ticket = require('./routes/ticket');
 // import shop routes
-const userRoutes = require('./routes/user');
+//const userRoutes = require('./routes/user');
 
 
+var db = require('./models');
 
-app.use('/user', adminData.routes);
-app.use(userRoutes);
+
 
 app.use((req, res, next) => {
   res.status(404).render('404', { pageTitle: 'Page Not Found' });

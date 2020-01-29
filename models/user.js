@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 // Creating our User model
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("user", {
+  var User = sequelize.define("User", {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -19,6 +19,10 @@ module.exports = function(sequelize, DataTypes) {
       allowNull:false
     }
   });
+  User.associate = function(models){
+    
+    User.hasMany(models.Ticket)
+  }
   
   User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);

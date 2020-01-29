@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 // Creating our Artist model
 
 module.exports = function(sequelize, DataTypes) {
-  var Artist = sequelize.define("artist", {
+  var Artist = sequelize.define("Artist", {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -24,6 +24,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
     }
   });
+
 //method checking encrypted password
   Artist.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);

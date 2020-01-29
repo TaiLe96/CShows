@@ -31,4 +31,34 @@ router.get('/user/login', (req, res, next) => {
   });
 });
 
+// Register Page
+router.get('/register', (req, res) => res.render('signup'));
+
+// Resister Handle
+router.post('/register', (req, res) => {
+  const { user_name, email, password, location } = req.body;
+  let errors = [];
+
+  // Check required fields
+  if (!user_name || !email || !password) {
+    errors.push({ msg: 'Please fill in all fields' });
+  }
+
+  // Check password length
+  if (password.length < 6) {
+    errors.push({ msg: 'Password should be at least 6 characters' });
+  }
+
+  if (errors.length > 0) {
+    res.render('signup', {
+      errors,
+      name,
+      email,
+      password
+    });
+  } else {
+    res.send('pass');
+  }
+});
+
 module.exports = router;

@@ -1,5 +1,6 @@
-
+const bcrypt = require("bycrptjs")
 // Creating our Artist model
+
 module.exports = function(sequelize, DataTypes) {
   var Artist = sequelize.define("artist", {
     // The email cannot be null, and must be a proper email before creation
@@ -11,8 +12,11 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true
       }
     },
-    // The password cannot be null
     password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    name: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -21,12 +25,11 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
     }
   });
-  // Creating a custom method for our Artist model. This will check if an unhashed password entered by the Artist can be compared to the hashed password stored in our database
+//method checking encrypted password
   Artist.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
   };
-  // Hooks are automatic methods that run during various phases of the Artist Model lifecycle
-  // In this case, before a Artist is created, we will automatically hash their password
+  //auto hash artists password
   Artist.addHook("beforeCreate", function(artist) {
     artist.password = bcrypt.hashSync(artist.password, bcrypt.genSaltSync(10), null);
   });

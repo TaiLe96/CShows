@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 const passport = require("../config/passport");
 const db = require("../models");
 
@@ -50,7 +50,7 @@ module.exports = function(app) {
     });
 
 }
-=======
+
 const path = require('path');
 
 const express = require('express');
@@ -85,4 +85,3 @@ router.get('/user/login', (req, res, next) => {
 });
 
 module.exports = router;
->>>>>>> master

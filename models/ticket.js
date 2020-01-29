@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Ticket = sequelize.define("tickets", {
+    var Ticket = sequelize.define("ticket", {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -11,15 +11,14 @@ module.exports = function(sequelize, DataTypes) {
 
 
 
-    Ticket.associate = function(models) {
-        Ticket.belongsTo(models.Artist, 
+    Ticket.associate = function(models, UserTickets) {
+        Ticket.belongsTo(models.artist, 
             { onDelete: "CASCADE", foreignKey: { allowNull: false } });
-        Ticket.belongsToMany(models.User, {
-            through: 'user',
-            // as: 'playlists',
-            foreignKey: 'concert',
-        });
+        Ticket.hasMany(models.user, 
+            {   as: 'tickets',
+                foreignKey: "ticket_id",
+             });
     }
-
+    
     return Ticket;
 }

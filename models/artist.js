@@ -1,4 +1,4 @@
-const bcrypt = require("bycrptjs")
+const bcrypt = require("bcryptjs");
 // Creating our Artist model
 
 module.exports = function(sequelize, DataTypes) {

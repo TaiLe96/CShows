@@ -1,4 +1,4 @@
-const bycrpt = require('bycrptjs');
+const bcrypt = require("bcryptjs");
 // Creating our User model
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("user", {
@@ -10,7 +10,6 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true
       }
     },
-    
     password: {
       type: DataTypes.STRING,
       allowNull: false

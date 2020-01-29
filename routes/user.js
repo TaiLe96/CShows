@@ -45,6 +45,7 @@ router.get('/buyer/signup', (req, res, next) => {
     loginCSS: true
   });
 });
+
 //Buyer dashboard
 router.get('/buyer/dashboard', (req, res, next) => {
   const tickets = adminData.tickets;

@@ -1,7 +1,10 @@
-
 // Creating our User model
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("user", {
+  var User = sequelize.define('user', {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     // The email cannot be null, and must be a proper email before creation
     email: {
       type: DataTypes.STRING,
@@ -14,6 +17,14 @@ module.exports = function(sequelize, DataTypes) {
     // The password cannot be null
     password: {
       type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [6]
+      }
+    },
+
+    location: {
+      type: DataTypes.STRING,
       allowNull: false
     }
   });
@@ -23,8 +34,12 @@ module.exports = function(sequelize, DataTypes) {
   };
   // Hooks are automatic methods that run during various phases of the User Model lifecycle
   // In this case, before a User is created, we will automatically hash their password
-  User.addHook("beforeCreate", function(user) {
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+  User.addHook('beforeCreate', function(user) {
+    user.password = bcrypt.hashSync(
+      user.password,
+      bcrypt.genSaltSync(10),
+      null
+    );
   });
   return User;
 };

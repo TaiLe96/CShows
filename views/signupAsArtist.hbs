@@ -1,0 +1,54 @@
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>Sign Up </h2>
+        <form class="signup">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email-input" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="password-input" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="text">Name</label>
+            <input type="name" class="form-control" id="name-input" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="radio">Genre</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+            <option type="radio" class="form-control" name="genre" value="Alternative">Alternative</option>
+            <option type="radio" class="form-control" name="genre" value="Blue">Blue</option>
+            <option type="radio" class="form-control" name="genre" value="Classical">Classical</option>
+            <option type="radio" class="form-control" name="genre" value="Country">Country</option>
+            <option type="radio" class="form-control" name="genre" value="Electronic">Electronic</option>
+            <option type="radio" class="form-control" name="genre" value="Hip Hop">Hip Hop</option>
+            <option type="radio" class="form-control" name="genre" value="Jazz">Jazz</option>
+            <option type="radio" class="form-control" name="genre" value="Latin">Latin</option>
+            <option type="radio" class="form-control" name="genre" value="Metal">Metal</option>
+            <option type="radio" class="form-control" name="genre" value="Pop">Pop</option>
+            <option type="radio" class="form-control" name="genre" value="Punk">Punk</option>
+            <option type="radio" class="form-control" name="genre" value="R&B">R&B</option>
+            <option type="radio" class="form-control" name="genre" value="Rock">Rock</option>
+            </select>
+          </div>
+          
+          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span> <span class="msg"></span>
+          </div>
+          <button type="submit" class="btn btn-default">Sign Up</button>
+        </form>
+        <br />
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/signup.js"></script>
+
+</body>
+
+</html>

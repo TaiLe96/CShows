@@ -13,18 +13,26 @@
     {{#if ticketCSS}}
     <link rel="stylesheet" href="/css/ticket.css">
     {{/if}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
 </head>
 
 <body>
     <header class="main-header">
         <nav class="main-header__nav">
+            <h1>CShows</h1>
             <ul class="main-header__item-list">
-                <li class="main-header__item"><a class="{{#if activeUserDashboard }}active{{/if}}" href="/">User
-                        Dashborad</a>
+                <li class="main-header__item"><a class="{{#if activeLogin }}active{{/if}}" href="/"></a>
                 </li>
-                <li class="main-header__item"><a class="{{#if activePurchaseTicket }}active{{/if}}"
-                        href="/user/purchaseTicket">Purchase Ticket</a></li>
-                <li class="main-header__item"><a class="{{#if activeLogin }}active{{/if}}" href="/user/login">Login</a>
+                {{!-- <li class="main-header__item"><a class="{{#if activeUserDashboard }}active{{/if}}" href="/">User
+                        Dashborad</a>
+                </li> --}}
+                {{!-- <li class="main-header__item"><a class="{{#if activePurchaseTicket }}active{{/if}}"
+                        href="/user/purchaseTicket">Purchase Ticket</a></li> --}}
+                {{!-- <li class="main-header__item"><a class="{{#if activeLogin }}active{{/if}}" href="/user/login">Login</a> --}}
+                {{!-- </li> --}}
+                <li class="main-header__item"><a class="{{#if activeSignupBuyer }}active{{/if}}" href="/signup/buyer">Signup</a>
+                </li>
+                <li class="main-header__item"><a class="{{#if activeSignupArtist }}active{{/if}}" href="/signup/artist">Signup</a>
                 </li>
             </ul>
         </nav>

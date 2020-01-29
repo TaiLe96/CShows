@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Concert = sequelize.define("concert", {
+    var Concert = sequelize.define("Concert", {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -23,12 +23,13 @@ module.exports = function(sequelize, DataTypes) {
         
     });
     Concert.associate = function(models) {
-        Concert.belongsTo(models.artist, 
-            { onDelete: "CASCADE", foreignKey: {allowNull: false}});
-        Concert.hasMany(models.user, 
-            {   as: 'concerts',
-                foreignKey: "concert_id",
-                });
+        Concert.belongsTo(models.Artist, 
+            { onDelete: "CASCADE"});
+        Concert.hasOne(models.Ticket)
     }
-    return Concert
+    return Concert;
 }
+
+//artist can have many concerts//
+//concert has a ticket//
+//users have many tickets

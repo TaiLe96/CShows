@@ -1,3 +1,56 @@
+
+const passport = require("../config/passport");
+const db = require("../models");
+
+
+module.exports = function(app) {
+
+// USER ROUTES
+
+    // Get all users
+    app.get("/api/users", function(req, res) {
+        console.log(req.body);
+        db.User.findAll({
+            include: [db.Ticket]
+        })
+        .then(function(dbUser) {
+            res.json(dbUser);
+        });
+    }); 
+
+    
+    app.get("/api/users/:id", function(req, res) {
+        console.log(req.body);
+        db.User.findOne({
+            where: { id: req.params.id },
+            include:[db.Ticket] 
+        }).then(function(dbUser) {
+            res.json(dbUser);
+        });
+    }); 
+
+  
+    app.post("/api/users", function(req, res) {
+        db.Users.create({ 
+            username: req.body.username,
+            password: req.body.password,
+            location: req.body.location
+        }).then(function(dbUser) {
+            res.status(200).end();
+        });
+    });
+
+    app.get('/api/user_data', function(req, res) {
+        if (req.user) {
+
+            res.json(req.user);
+        } else {
+            res.json({});
+        }
+    });
+
+}
+
 const path = require('path');
 
 const express = require('express');
@@ -19,6 +72,7 @@ router.get('/', (req, res, next) => {
     ticketCSS: true
   });
 });
+<<<<<<< HEAD
 
 //Login
 // router.get('/user/login', (req, res, next) => {
@@ -35,6 +89,10 @@ router.get('/', (req, res, next) => {
 
 //Sign Up as Buyer
 router.get('/buyer/signup', (req, res, next) => {
+=======
+//test
+router.get('/user/login', (req, res, next) => {
+>>>>>>> 087fb9944c9af8b6fbf535ef38273846f6d7b997
   const tickets = adminData.tickets;
   res.render('signup', {
     // prods: tickets,

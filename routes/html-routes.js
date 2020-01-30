@@ -18,6 +18,14 @@ module.exports = function(app) {
       }
     });
 
+    app.get('/signupartist', (req, res) => {
+      res.render('signUpAsArtist');
+    })
+
+    app.get("/signupbuyer", (req, res) => {
+      res.render("signup");
+    })
+
     app.get('/user_profile',isAuth, (req,res) => {
       res.render('user_dash');
     });
@@ -25,4 +33,5 @@ module.exports = function(app) {
     app.get("/artist_profile/", isAuth, function(req, res) {
       res.render('artist_dash');
     }); 
+
 };
